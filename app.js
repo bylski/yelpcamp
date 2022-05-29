@@ -181,7 +181,7 @@ app.use((err, req, res, next) => {
 
 
 // Listen at port 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 app.listen(8080);
 
 
