@@ -1,0 +1,79 @@
+<% layout('layouts/boilerplate') -%>
+
+<main class="row">
+
+    <% if (success && success.length) { %>
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+          <%= success %>
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+      <% } %>
+      
+      
+      <% if (error && error.length) { %>
+        <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+          <%= error %>
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+      <% } %>  
+          
+    <div class="w-100 p-0">
+        <div id="map" style="width: 100%; height: 400px"></div> 
+    </div>
+    <section class="col-md-10 offset-md-1">
+        <h1 class="mt-4 mb-3 fw-normal">All Campgrounds:</h1>
+        <hr>
+        <% let i = 0 %> 
+        <% for (camp of campgrounds) {%>
+        <div class="camp-card card container text-center text-md-start ps-0 pe-0 mb-4 mb-md-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="carousel-<%= i %>" class="carousel slide carousel-fade" data-bs-ride="carousel-<%= i %> ">
+                        <div class="carousel-inner">
+                        <% if (camp.images.length > 0) { %>
+                            <% for( let i = 0; i < camp.images.length; i++ ) { %>
+                                <div class="carousel-item <%= i === 0 ? "active": "" %>">
+                                    <img src="<%= camp.images[i].cropIndex  %>"  class="d-block w-100" alt="...">
+                                </div>
+                            <% } %>
+                        <% } else { %>
+                            <div class="carousel-item active">
+                                <img src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png"  class="d-block w-100" alt="...">
+                            </div>
+                        <% } %> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 d-flex flex-column">
+                    <h5 class="pt-3"><%= camp.title %></h5>
+                    <p class=""><%= camp.description %></p>
+                    <h5 class="mt-2"> $<%= camp.price %>/Night</h5>
+                    <h6 class="text-muted mt-auto">Verified Campground <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20" height="20" viewBox="0 0 256 256" xml:space="preserve">
+                        <desc>Created with Fabric.js 1.7.22</desc>
+                        <defs>
+                        </defs>
+                        <g transform="translate(128 128) scale(0.72 0.72)" style="">
+                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)" >
+                            <circle cx="45" cy="45" r="45" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(40,201,55); fill-rule: nonzero; opacity: 1;" transform="  matrix(1 0 0 1 0 0) "/>
+                            <path d="M 38.478 64.5 c -0.01 0 -0.02 0 -0.029 0 c -1.3 -0.009 -2.533 -0.579 -3.381 -1.563 L 21.59 47.284 c -1.622 -1.883 -1.41 -4.725 0.474 -6.347 c 1.884 -1.621 4.725 -1.409 6.347 0.474 l 10.112 11.744 L 61.629 27.02 c 1.645 -1.862 4.489 -2.037 6.352 -0.391 c 1.862 1.646 2.037 4.49 0.391 6.352 l -26.521 30 C 40.995 63.947 39.767 64.5 38.478 64.5 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        </g>
+                        </g>
+                        </svg></h6>
+    
+                </div>
+                <a href="campgrounds/<%= camp._id %>" class="stretched-link"></a>
+            </div>
+        </div>
+        <% i++ %> 
+        <% }; %>
+    </section>
+    </div>
+</main>
+
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
+</script>
+<script src="/jsFiles/clusterMap.js"></script>
+<script src="/jsFiles/onHoverImgChange.js"></script>

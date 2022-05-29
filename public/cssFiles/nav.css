@@ -1,0 +1,30 @@
+#home-link, #campgrounds-link, #new-camp-link, #register-link, #login-link {
+    padding: 0.25rem;
+    margin-right: 0.7rem;
+}
+
+a.nav-link.active {
+    color: white;
+    border-bottom: 0.1rem solid white;
+}
+
+a.nav-link:hover {
+    color: rgba(255, 255, 255, 0.5);
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.5);
+}
+
+div[class*="show"] a.nav-link.active {
+    border-bottom: none;
+}
+
+div[class*="collapsing"] a.nav-link.active {
+    border-bottom: none;
+}
+
+div[class*="show"] a.nav-link:hover {
+    border-bottom: none;
+}
+
+div[class*="collapsing"] a.nav-link:hover {
+    border-bottom: none;
+}

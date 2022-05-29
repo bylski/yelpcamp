@@ -1,0 +1,21 @@
+
+.camp-card {
+    transition: ease-in, 0.4s;
+}
+
+.camp-card:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.carousel-item {
+    transition: ease-in 1s;
+}
+
+
+@media (min-width: 991px) {
+    .review-scroll {
+        max-height: 31.5rem;
+        overflow-y: auto;
+    }
+}
