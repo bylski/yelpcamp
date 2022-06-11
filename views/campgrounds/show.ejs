@@ -41,7 +41,7 @@
                     <li class="text-muted list-group-item"><%= camp.location %></li>
                     <li class="list-group-item"><%=`$${ camp.price }/Night`%></li>
                     <li class="list-group-item">
-                        <h6 class="card-subtitle text-muted">Created By #<%= author.username %></h6>
+                        <h6 class="card-subtitle text-muted pt-1">Created By #<%= author.username %></h6>
                     </li>
                     <% if ( currentUser && author.equals(currentUser._id )) { %>
                         <li class="list-group-item">
