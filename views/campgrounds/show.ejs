@@ -1,5 +1,6 @@
 <% layout('layouts/boilerplate') -%>
 <link rel="stylesheet" href="/cssFiles/stars.css">
+<link rel="stylesheet" href="/cssFiles/show.css">
 
 <div class="container-fluid">
     <div class="row">
@@ -98,8 +99,16 @@
                         <div class="border rounded p-2 mb-2">
                             <div class="">
                                 <div class="d-flex justify-content-between">
-                                    <h6 class="card-subtitle text-muted mt-2 mb-2 pb-1 ps-1"><small>#<%= review.author.username %></small></h6>
-                                    <p class="starability-result me-4" data-rating="<%= review.rating %>"></p>
+                                    <div class="d-flex justify-start">
+                                        <?xml version="1.0" ?><svg width="25" height="25" viewBox="0 -5 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#606161;}</style></defs><title/><g data-name="Layer 7" id="Layer_7"><path class="cls-1" d="M19.75,15.67a6,6,0,1,0-7.51,0A11,11,0,0,0,5,26v1H27V26A11,11,0,0,0,19.75,15.67ZM12,11a4,4,0,1,1,4,4A4,4,0,0,1,12,11ZM7.06,25a9,9,0,0,1,17.89,0Z"/></g></svg>
+                                        <h6 class="card-subtitle text-muted mt-2 mb-2 pb-1 ps-1">
+                                            <small>
+                                                #<%= review.author.username %>
+                                            </small></h6>
+                                    </div>
+                                    <div>
+                                        <p class="starability-result me-4" data-rating="<%= review.rating %>"></p>
+                                    </div>
                                 </div>
                                 <p class="m-0 pb-1 ps-1"><%= review.body %></p>
                             </div>
