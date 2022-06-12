@@ -14,13 +14,11 @@ campCards.forEach((campCard, i) => {
             imgCarousel.next();
             console.log("CHANGE")
         }, 3000)
-        console.log('enter')
 
     // When mouse leaves camp card -> pause the carousel, go to the first image
     campCard.addEventListener('mouseleave', () => {
         clearInterval(changeInterval);
         imgCarousel.to(0);
-        console.log('left')
 
     })
 })
