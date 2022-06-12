@@ -57,7 +57,7 @@ const secret = process.env.SECRET || "somesecretkey";
 const sessionConfig = {
     store,
     name: "session",
-    secret: "somesecretkey",
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
